@@ -21,7 +21,7 @@ def main():
     result = insecure_deserialization(data)
     insecure_subprocess_command(user_input)
 
-    print("Result of insecure deserialization:", result)
+    print("Result of insecure deserialization is:", result)
 
 if __name__ == "__main__":
     main()
