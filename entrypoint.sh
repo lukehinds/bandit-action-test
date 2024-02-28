@@ -7,6 +7,10 @@ github_repository=$INPUT_GITHUB_REPOSITORY
 
 # Initialize the Bandit command
 cmd="bandit"
+# Check if the recursive flag is set
+if [ -n "${INPUT_RECURSIVE}" ]; then
+    cmd+=" -r"
+fi
 
 # Check for the path input and add it to the command
 if [ -n "${INPUT_PATH}" ]; then
@@ -31,7 +35,23 @@ if [ -n "${INPUT_CONFIDENCE}" ]; then
     esac
 fi
 
-# Additional flags can be added here following the same pattern
+# Add arguments to the command based on the input values
+[ "$INPUT_RECURSIVE" = "true" ] && cmd+=" -r"
+[ -n "$INPUT_AGGREGATE" ] && cmd+=" -a $INPUT_AGGREGATE"
+[ -n "$INPUT_CONTEXT_LINES" ] && cmd+=" -n $INPUT_CONTEXT_LINES"
+[ -n "$INPUT_CONFIG_FILE" ] && cmd+=" -c $INPUT_CONFIG_FILE"
+[ -n "$INPUT_PROFILE" ] && cmd+=" -p $INPUT_PROFILE"
+[ -n "$INPUT_TESTS" ] && cmd+=" -t $INPUT_TESTS"
+[ -n "$INPUT_SKIPS" ] && cmd+=" -s $INPUT_SKIPS"
+[ -n "$INPUT_SEVERITY_LEVEL" ] && cmd+=" --severity-level $INPUT_SEVERITY_LEVEL"
+[ -n "$INPUT_CONFIDENCE_LEVEL" ] && cmd+=" --confidence-level $INPUT_CONFIDENCE_LEVEL"
+[ "$INPUT_VERBOSE" = "true" ] && cmd+=" -v"
+[ "$INPUT_DEBUG" = "true" ] && cmd+=" -d"
+[ "$INPUT_QUIET" = "true" ] && cmd+=" -q"
+[ "$INPUT_IGNORE_NOSEC" = "true" ] && cmd+=" --ignore-nosec"
+[ -n "$INPUT_EXCLUDE_PATHS" ] && cmd+=" -x $INPUT_EXCLUDE_PATHS"
+[ -n "$INPUT_BASELINE" ] && cmd+=" -b $INPUT_BASELINE"
+[ -n "$INPUT_INI_PATH" ] && cmd+=" --ini $INPUT_INI_PATH"
 
 # Specify the output format as JSON and output file
 cmd+=" -f json -o report.json"
