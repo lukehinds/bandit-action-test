@@ -1,7 +1,7 @@
 FROM ghcr.io/pycqa/bandit/bandit:latest
 
-ENV GITHUB_TOKEN=$GITHUB_TOKEN
-ENV GITHUB_REPOSITORY=$GITHUB_REPOSITORY
+ENV GITHUB_TOKEN=""
+ENV GITHUB_REPOSITORY=""
 
 # Install additional dependencies if necessary
 RUN apk add --no-cache git bash python3 py3-pip && \
