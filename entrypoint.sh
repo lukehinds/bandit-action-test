@@ -41,7 +41,7 @@ echo "Executing command: $cmd"
 eval $cmd
 
 # Call post_comment.py to post the Bandit report as a comment on the pull request
-python post_comment.py
+GITHUB_TOKEN=$GITHUB_TOKEN GITHUB_REPOSITORY=$GITHUB_REPOSITORY python /post_comment.py
 
 # If specified, exit with 0 even if issues are found
 if [ "${INPUT_EXIT_ZERO}" == "true" ]; then
