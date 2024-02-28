@@ -1,0 +1,30 @@
+name: 'Bandit Code Scan'
+description: 'Run Bandit code scans on your Python codebase'
+inputs:
+  GITHUB_TOKEN:
+    description: 'GitHub token'
+    required: true
+  path:
+    description: 'Path to scan'
+    required: true
+    default: '.'
+  level:
+    description: 'Report only issues of a given severity level or higher'
+    required: false
+    default: 'low'
+  confidence:
+    description: 'Report only issues of a given confidence level or higher'
+    required: false
+    default: 'low'
+  exit_zero:
+    description: 'Exit with 0, even with results found'
+    required: false
+    default: 'false'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.path }}
+    - ${{ inputs.level }}
+    - ${{ inputs.confidence }}
+    - ${{ inputs.exit_zero }}

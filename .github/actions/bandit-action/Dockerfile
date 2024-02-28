@@ -1,0 +1,15 @@
+FROM ghcr.io/pycqa/bandit/bandit:latest
+
+# Install additional dependencies if necessary
+RUN apk add --no-cache git bash python3 py3-pip && \
+    pip install pygithub
+
+# Copy the entrypoint script
+COPY entrypoint.sh /entrypoint.sh
+
+# Make the entrypoint script executable
+RUN chmod +x /entrypoint.sh
+
+COPY src/post_comment.py /post_comment.py
+
+ENTRYPOINT ["/entrypoint.sh"]
