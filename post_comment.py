@@ -5,9 +5,9 @@ import json
 # Define emoji for each severity level
 severity_emoji = {
     "HIGH": "🔴",
-    "MEDIUM": "🟠",
+    "MED": "🟠",
     "LOW": "🟡",
-    "UNDEFINED": "⚪"
+    "UNDEF": "⚪"
 }
 
 # Access the GITHUB_TOKEN environment variable
@@ -35,7 +35,7 @@ severity_counts = {"HIGH": 0, "MEDIUM": 0, "LOW": 0, "UNDEFINED": 0}
 for result in report_data.get('results', []):
     severity_counts[result['issue_severity']] += 1
 
-comment += f"We found **{severity_counts['HIGH']} High**, **{severity_counts['MEDIUM']} Medium**, and **{severity_counts['LOW']} Low** severity issues. Great job keeping the codebase secure! Remember, security is a journey, not a destination.\n\n"
+comment += f"We found **{severity_counts['HIGH']} High**, **{severity_counts['MEDIUM']} Medium**, and **{severity_counts['LOW']} Low** severity issues. \n\n"
 
 # Add detailed findings header
 comment += "### Detailed Findings\n---\n"
@@ -62,10 +62,8 @@ comment += "- For high-severity issues, prioritize fixes to mitigate potential s
 comment += "- Review the [Bandit documentation](https://bandit.readthedocs.io/) for detailed explanations and remediation strategies.\n"
 comment += "</details>\n\n"
 
-# Add tips and sign-off
-comment += "---\n\n### Tips 💡\n"
-comment += "- Regular code reviews and security scans can significantly reduce security risks.\n\n"
-comment += "Happy coding! 😊 Feel free to reach out if you need any help with these issues."
-
+comment += "This report was written by the official bandit action [link when published]."
+comment += "\n\n<sub>Bandit is a tool designed to find common security issues in Python code. To learn more about Bandit, visit the [official documentation](https://bandit.readthedocs.io/).</sub>"
+comment += "\n\n<sub>For community support, please join our [discord server[(https://discord.gg/D3RTpU9zEj).</sub>"
 # Post the comment
 pr.create_issue_comment(comment)
