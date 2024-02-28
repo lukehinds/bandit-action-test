@@ -18,3 +18,4 @@ jobs:
         level: "high"
         confidence: "high"
         exit_zero: "true"
+        recursive: "true"
