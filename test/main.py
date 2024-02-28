@@ -14,7 +14,7 @@ def insecure_subprocess_command(user_input):
     subprocess.call(command, shell=True)
 
 def main():
-    data = b"cos\nsystem\n(S'echo Hello, world!'\ntR."  # Malicious pickle data
+    data = b"cos\nsystem\n(S'echo Hello world!'\ntR."  # Malicious pickle data
     user_input = "user_input_here; rm -rf /"  # Malicious user input
 
     # Calling functions with security issues
