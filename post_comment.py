@@ -56,6 +56,8 @@ for result in report_data.get('results', []):
     # Add row to the comment with the new columns
     comment += f"| {severity_emoji.get(severity, '⚪')} {severity} | {issue_text} | {filename} | {line_number} | {confidence} | [More Info]({more_info_url}) | {test_id} |\n"
 
+comment += "\n---\n"
+
 # Add collapsible section for recommendations
 comment += "\n<details>\n<summary>🔍 View detailed recommendations for fixing issues</summary>\n\n"
 comment += "- For high-severity issues, prioritize fixes to mitigate potential security risks.\n"
