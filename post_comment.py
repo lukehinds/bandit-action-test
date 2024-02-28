@@ -1,8 +1,9 @@
-from github import Github
 import os
+from github import Github
 
-# Make sure to get the GITHUB_TOKEN from the environment variables
-github_token = os.getenv('GITHUB_TOKEN')
+# Access the environment variables with the INPUT_ prefix
+github_token = os.getenv('INPUT_GITHUB_TOKEN')
+github_repository = os.getenv('INPUT_GITHUB_REPOSITORY')
 
 if not github_token:
     raise Exception('The GITHUB_TOKEN environment variable is not set.')

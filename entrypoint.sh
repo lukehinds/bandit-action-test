@@ -1,5 +1,10 @@
 #!/bin/bash
 
+
+# Use the INPUT_ prefixed environment variables that are passed by GitHub Actions
+github_token=$INPUT_GITHUB_TOKEN
+github_repository=$INPUT_GITHUB_REPOSITORY
+
 # Initialize the Bandit command
 cmd="bandit"
 
