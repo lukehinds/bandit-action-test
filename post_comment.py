@@ -1,8 +1,11 @@
-import os
 from github import Github
+import os
 
-# Initialize GitHub client
-g = Github(os.getenv('GITHUB_TOKEN'))
+# Make sure to get the GITHUB_TOKEN from the environment variables
+github_token = os.getenv('GITHUB_TOKEN')
+
+if not github_token:
+    raise Exception('The GITHUB_TOKEN environment variable is not set.')
 
 # Get repository
 repo = g.get_repo(os.getenv('GITHUB_REPOSITORY'))
