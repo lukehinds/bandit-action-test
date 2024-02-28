@@ -50,6 +50,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run Bandit Scan
+      uses: ./
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
@@ -69,6 +70,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run Bandit Scan
+      uses: ./
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
