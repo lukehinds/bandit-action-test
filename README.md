@@ -95,7 +95,6 @@ jobs:
         exit_zero: false
 ```
 
-Note the `uses:` is the path where Bandit will scan for code. This is typically the root of your repository. 
 ## Enable Workflow Permissions
 
 This action requires the need to post an issue to the repository. To enable this,

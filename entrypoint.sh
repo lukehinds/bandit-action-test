@@ -36,6 +36,10 @@ if [ -n "${INPUT_CONFIDENCE}" ]; then
 fi
 
 # Add arguments to the command based on the input values
+[ "$INPUT_VERBOSE" = "true" ] && cmd+=" -v"
+[ "$INPUT_DEBUG" = "true" ] && cmd+=" -d"
+[ "$INPUT_QUIET" = "true" ] && cmd+=" -q"
+[ "$INPUT_IGNORE_NOSEC" = "true" ] && cmd+=" --ignore-nosec"
 [ "$INPUT_RECURSIVE" = "true" ] && cmd+=" -r"
 [ -n "$INPUT_AGGREGATE" ] && cmd+=" -a $INPUT_AGGREGATE"
 [ -n "$INPUT_CONTEXT_LINES" ] && cmd+=" -n $INPUT_CONTEXT_LINES"
@@ -45,10 +49,6 @@ fi
 [ -n "$INPUT_SKIPS" ] && cmd+=" -s $INPUT_SKIPS"
 [ -n "$INPUT_SEVERITY_LEVEL" ] && cmd+=" --severity-level $INPUT_SEVERITY_LEVEL"
 [ -n "$INPUT_CONFIDENCE_LEVEL" ] && cmd+=" --confidence-level $INPUT_CONFIDENCE_LEVEL"
-[ "$INPUT_VERBOSE" = "true" ] && cmd+=" -v"
-[ "$INPUT_DEBUG" = "true" ] && cmd+=" -d"
-[ "$INPUT_QUIET" = "true" ] && cmd+=" -q"
-[ "$INPUT_IGNORE_NOSEC" = "true" ] && cmd+=" --ignore-nosec"
 [ -n "$INPUT_EXCLUDE_PATHS" ] && cmd+=" -x $INPUT_EXCLUDE_PATHS"
 [ -n "$INPUT_BASELINE" ] && cmd+=" -b $INPUT_BASELINE"
 [ -n "$INPUT_INI_PATH" ] && cmd+=" --ini $INPUT_INI_PATH"
