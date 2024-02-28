@@ -11,6 +11,6 @@ COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # Assuming the Dockerfile is located at the root of the repository
-COPY src/post_comment.py /post_comment.py
+COPY post_comment.py /post_comment.py
 
 ENTRYPOINT ["/entrypoint.sh"]
