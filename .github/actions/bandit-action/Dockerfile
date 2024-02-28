@@ -10,6 +10,7 @@ COPY entrypoint.sh /entrypoint.sh
 # Make the entrypoint script executable
 RUN chmod +x /entrypoint.sh
 
-COPY src/post_comment.py /post_comment.py
+# Assuming the Dockerfile is located at the root of the repository
+COPY .github/actions/bandit-action/src/post_comment.py /post_comment.py
 
 ENTRYPOINT ["/entrypoint.sh"]
