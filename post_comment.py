@@ -4,9 +4,18 @@ from github import Github
 # Initialize GitHub client
 g = Github(os.getenv('GITHUB_TOKEN'))
 
-# Get repository and pull request
+# Get repository
 repo = g.get_repo(os.getenv('GITHUB_REPOSITORY'))
-pr = repo.get_pull(int(os.getenv('GITHUB_REF').split('/')[-1]))
+
+# Extract pull request number from GITHUB_REF
+ref_parts = os.getenv('GITHUB_REF').split('/')
+if 'pull' in ref_parts:
+    pr_number = int(ref_parts[ref_parts.index('pull') + 1])
+else:
+    raise ValueError(f"Invalid GITHUB_REF for a pull request: {os.getenv('GITHUB_REF')}")
+
+# Get pull request
+pr = repo.get_pull(pr_number)
 
 # Read the Bandit report
 with open('report.json', 'r') as file:
