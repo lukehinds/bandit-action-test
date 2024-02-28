@@ -15,7 +15,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         path: "."
-        level: "high"
-        confidence: "high"
         exit_zero: "true"
         recursive: "true"
