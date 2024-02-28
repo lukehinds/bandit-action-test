@@ -2,8 +2,15 @@ import os
 from github import Github
 
 # Access the environment variables with the INPUT_ prefix
-github_token = os.getenv('INPUT_GITHUB_TOKEN')
-github_repository = os.getenv('INPUT_GITHUB_REPOSITORY')
+# Access the GITHUB_TOKEN environment variable
+github_token = os.getenv('GITHUB_TOKEN')
+if not github_token:
+    raise Exception('GITHUB_TOKEN is not set or empty')
+
+# Access the GITHUB_REPOSITORY environment variable (if you need it in your script)
+github_repository = os.getenv('GITHUB_REPOSITORY')
+if not github_repository:
+    raise Exception('GITHUB_REPOSITORY is not set or empty')
 
 # Initialize GitHub client
 g = Github(os.getenv('GITHUB_TOKEN'))
