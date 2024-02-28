@@ -5,8 +5,8 @@ from github import Github
 github_token = os.getenv('INPUT_GITHUB_TOKEN')
 github_repository = os.getenv('INPUT_GITHUB_REPOSITORY')
 
-if not github_token:
-    raise Exception('The GITHUB_TOKEN environment variable is not set.')
+# Initialize GitHub client
+g = Github(os.getenv('GITHUB_TOKEN'))
 
 # Get repository
 repo = g.get_repo(os.getenv('GITHUB_REPOSITORY'))
